@@ -7,4 +7,7 @@
 #include <unistd.h>
 #include <sys/wait.h>
 #include <sys/types.h> // ver si es necesario dejar esta/
+
+int prompt(void);
+char *_read(void);
 #endif 
