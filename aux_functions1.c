@@ -1,6 +1,36 @@
 #include "main.h"
 #include <stdio.h>
 #include <stdlib.h>
+
+/**
+*exec - exec a command with arg and env
+*@tok: array of tokenized line input
+*@av: vector of arguments.
+*@env: acces to the enviroment variables
+*Return: 0
+*/
+
+void exec(char **tok, char **av, char **env)
+{
+pid_t pid;
+(void)env;
+
+pid = fork();
+
+if (pid == -1)
+{
+	write(2, "error", 5);
+	free(*tok);
+}
+if (pid == 0)
+{
+execve(av[0], av, NULL);
+free(tok);
+}
+else
+wait(NULL);
+
+}
 /**
  *token - divide given string in tokens
  *@line: given string
@@ -98,6 +128,7 @@ return (line);
 int main(int ac, char **av, char **env)
 {
 char *line = NULL;
+char **tok = NULL;
 (void)ac;
 (void)av;
 (void)env;
@@ -107,7 +138,9 @@ while (1)
 prompt();
 line = _read();
 printf("%s\n", line);
-token(line);
+tok = token(line);
+free(line);
+exec(tok, av, env);
 }
 return (0);
 }
