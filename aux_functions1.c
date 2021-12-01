@@ -12,32 +12,34 @@
 
 void exec(char **tok, char **av, char **env)
 {
-int res;
-pid_t pid;
-(void)env;
-(void)av;
+	int res;
+	pid_t pid;
+	(void)env;
+	(void)av;
 
-pid = fork();
+	pid = fork();
 
-if (pid == -1)
-{
-	perror("error");
+	if (pid == -1)
+	{
+		perror("error");
+		free(tok);
+		exit(3);
+	}
+	if (pid == 0)
+	{
+		res = execve(tok[0], tok, NULL);
+		if (res == -1)
+		{
+			perror("error");
+		}
+		free(tok);
+		exit(0);
+	}
+	else
+	{
+		wait(NULL);
+	}
 	free(tok);
-	exit(3);
-}
-if (pid == 0)
-{
-res = execve(tok[0], tok, NULL);
-if (res == -1)
-{
-	perror("error");
-}
-free(tok);
-exit(0);
-}
-else
-wait(NULL);
-free(tok);
 }
 
 /**
@@ -66,7 +68,7 @@ char **token(char *line, char *sep)
 		i++;
 	}
 	tokarray[i] = NULL;
-	return (tokarray);
+return (tokarray);
 }
 
 /**
@@ -77,18 +79,18 @@ char **token(char *line, char *sep)
 
 int prompt(void)
 {
-int first_time = 1;
-char *clear_string = "'\0'"; /** ver si funciona*/
+	int first_time = 1;
+	char *clear_string = "'\0'"; /** ver si funciona*/
 /**isatty() returns 1 if fd is an open file descriptor referring to a termin*/
-if (isatty(STDIN_FILENO) == 1)
-{
-	if (first_time == 1)
+	if (isatty(STDIN_FILENO) == 1)
 	{
-	write(STDOUT_FILENO, clear_string, 1);
-	first_time = 0;
-	}
+		if (first_time == 1)
+		{
+			write(STDOUT_FILENO, clear_string, 1);
+			first_time = 0;
+		}
 	write(STDOUT_FILENO, "$  ", 4);
-}
+	}
 return (0);
 }
 
@@ -99,26 +101,26 @@ return (0);
 
 char *_read(void)
 {
-char *line = NULL;
-size_t len = 0;
-size_t nread;
-int i = 0;
+	char *line = NULL;
+	size_t len = 0;
+	size_t nread;
+	int i = 0;
 
-line = malloc(sizeof(char) * 1024);
-if (line == NULL)
-	return (0);
+	line = malloc(sizeof(char) * 1024);
+	if (line == NULL)
+		return (0);
 
-nread = getline(&line, &len, stdin);
-if ((int)nread == -1)
-{
-	perror("Read Error");
-	free(line);
-}
-for (i = 0; line[i] != '\0'; i++)
+	nread = getline(&line, &len, stdin);
+	if ((int)nread == -1)
 	{
-	;
+		perror("Read Error");
+		free(line);
 	}
-line[i - 1] = '\0';
+	for (i = 0; line[i] != '\0'; i++)
+	{
+		;
+	}
+	line[i - 1] = '\0';
 /**free(line); hay que liberarla mas tarde*/
 return (line);
 }
