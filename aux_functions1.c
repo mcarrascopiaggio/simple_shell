@@ -12,8 +12,10 @@
 
 void exec(char **tok, char **av, char **env)
 {
+int res;
 pid_t pid;
 (void)env;
+(void)av;
 
 pid = fork();
 
@@ -24,7 +26,11 @@ if (pid == -1)
 }
 if (pid == 0)
 {
-execve(av[0], av, NULL);
+res = execve(tok[0], tok, NULL);
+if (res == -1)
+{
+perror("error");
+}
 free(tok);
 }
 else
@@ -56,11 +62,7 @@ char **token(char *line)
 		i++;
 	}
 	tokarray[i] = NULL;
-	for (i = 0; tokarray[i] != NULL; i++)
-	{
-		printf("%s\n", tokarray[i]);
-	}
-return (tokarray);
+	return (tokarray);
 }
 
 /**
@@ -115,32 +117,4 @@ for (i = 0; line[i] != '\0'; i++)
 line[i - 1] = '\0';
 /**free(line); hay que liberarla mas tarde*/
 return (line);
-}
-
-/**
- *main - simple shell
- *@ac: number of arguments
- *@av: vector of arguments
- *@env: enviroment
- *Return: 0
- */
-
-int main(int ac, char **av, char **env)
-{
-char *line = NULL;
-char **tok = NULL;
-(void)ac;
-(void)av;
-(void)env;
-
-while (1)
-{
-prompt();
-line = _read();
-printf("%s\n", line);
-tok = token(line);
-free(line);
-exec(tok, av, env);
-}
-return (0);
 }

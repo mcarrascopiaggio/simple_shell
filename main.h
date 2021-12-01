@@ -6,8 +6,10 @@
 #include <string.h>
 #include <unistd.h>
 #include <sys/wait.h>
-#include <sys/types.h> // ver si es necesario dejar esta/
+#include <sys/types.h>
 
 int prompt(void);
 char *_read(void);
-#endif 
+char **token(char *line);
+void exec(char **tok, char **av, char **env);
+#endif
