@@ -3,6 +3,28 @@
 #include <stdlib.h>
 
 /**
+ * wordcount - count the words using pased separator
+ * @string: pointer to the string to count
+ * @delim: delimiter of the words
+ * Return: number of words
+ */
+
+int wordcount(char *string, char delim)
+{
+	int i = 0, words = 0;
+
+	if (string)
+	{
+		for (i = 0; string[i] != '\0'; i++)
+		{
+			if (string[i] == delim)
+			words++;
+		}
+		words++;
+	}
+	return (words);
+}
+/**
 *exec - exec a command with arg and env
 *@tok: array of tokenized line input
 *@av: vector of arguments.
@@ -50,11 +72,12 @@ void exec(char **tok, char **av, char **env)
  */
 char **token(char *line, char *sep)
 {
+	int bufsize = wordcount(line, ' ');
 	int i = 0;
 	char *tok = NULL;
 	char **tokarray = NULL;
 
-	tokarray = malloc(1024);
+	tokarray = malloc(sizeof(char *) * (bufsize + 1));
 	if (!tokarray)
 	{
 		free(tokarray);
