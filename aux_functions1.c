@@ -21,25 +21,29 @@ pid = fork();
 
 if (pid == -1)
 {
-	write(2, "error", 5);
-	free(*tok);
+	perror("error");
+	free(tok);
+	exit(3);
 }
 if (pid == 0)
 {
 res = execve(tok[0], tok, NULL);
 if (res == -1)
 {
-perror("error");
+	perror("error");
 }
 free(tok);
+exit(0);
 }
 else
 wait(NULL);
-
+free(tok);
 }
+
 /**
  *token - divide given string in tokens
  *@line: given string
+ *@sep: sep character
  *Return: array of strings
  */
 char **token(char *line, char *sep)
