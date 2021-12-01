@@ -42,7 +42,7 @@ wait(NULL);
  *@line: given string
  *Return: array of strings
  */
-char **token(char *line)
+char **token(char *line, char *sep)
 {
 	int i = 0;
 	char *tok = NULL;
@@ -54,11 +54,11 @@ char **token(char *line)
 		free(tokarray);
 		exit(3);
 	}
-	tok = strtok(line, " ");
+	tok = strtok(line, sep);
 	while (tok != NULL)
 	{
 		tokarray[i] = tok;
-		tok = strtok(NULL, " ");
+		tok = strtok(NULL, sep);
 		i++;
 	}
 	tokarray[i] = NULL;

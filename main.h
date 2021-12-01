@@ -10,6 +10,6 @@
 
 int prompt(void);
 char *_read(void);
-char **token(char *line);
+char **token(char *line, char *sep);
 void exec(char **tok, char **av, char **env);
 #endif

@@ -22,7 +22,7 @@ while (1)
 prompt();
 line = _read();
 printf("%s\n", line);
-tok = token(line);
+tok = token(line, " ");
 for (i = 0; tok[i] != NULL; i++)
 {
 printf("%s\n", tok[i]);
