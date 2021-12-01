@@ -86,3 +86,28 @@ line[i - 1] = '\0';
 /**free(line); hay que liberarla mas tarde*/
 return (line);
 }
+
+/**
+ *main - simple shell
+ *@ac: number of arguments
+ *@av: vector of arguments
+ *@env: enviroment
+ *Return: 0
+ */
+
+int main(int ac, char **av, char **env)
+{
+char *line = NULL;
+(void)ac;
+(void)av;
+(void)env;
+
+while (1)
+{
+prompt();
+line = _read();
+printf("%s\n", line);
+token(line);
+}
+return (0);
+}
