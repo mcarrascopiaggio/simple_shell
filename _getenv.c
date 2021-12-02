@@ -17,7 +17,7 @@ for (i = 0; environ[i] != NULL; i++)
 	{
 		;
 	}
-	match = strncmp(environ[i], var, j);
+	match = _strncmp(environ[i], var, j);
 	if (match == 0)
 	{
 		strtok(environ[i], "=");

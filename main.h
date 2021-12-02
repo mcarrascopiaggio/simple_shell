@@ -14,7 +14,8 @@ char *_read(void);
 char **token(char *line, char *sep);
 void exec(char **tok, char *line);
 void _free( char **tok);
-/**string fuctions*/
+/**string functions*/
+int _strncmp( char *string1, char *string2, int n);
 char *_strstr(char *haystack, char *needle);
 char *_strpbrk(char *s, char *accept);
 unsigned int _strspn(char *s, char *accept);
