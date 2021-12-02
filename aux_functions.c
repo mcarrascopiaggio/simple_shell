@@ -123,8 +123,10 @@ char *_read(void)
 
 	line = malloc(sizeof(char) * 1024);
 	if (line == NULL)
+	{
+		free(line);
 		return (0);
-
+	}
 	nread = getline(&line, &len, stdin);
 	if ((int)nread == -1)
 	{
