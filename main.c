@@ -29,10 +29,6 @@ while (1)
 		printf("%s\n", tok[i]);
 	}
 	exec(tok, line);
-	if (line)
-	{
-		free(line);
-	}
 }
 return (0);
 }

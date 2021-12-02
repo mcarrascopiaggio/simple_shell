@@ -31,33 +31,33 @@ int wordcount(char *string, char delim)
 
 void exec(char **tok, char *line)
 {
-int res;
-pid_t pid;
+	int res;
+	pid_t pid;
 
-pid = fork();
+	pid = fork();
 
-if (pid == -1)
-{
-	perror("error");
+	if (pid == -1)
+	{
+		perror("error");
+		free(line);
+		_free(tok);
+		exit(3);
+	}
+	if (pid == 0)
+	{
+		res = execve(tok[0], tok, NULL);
+		if (res == -1)
+		{
+			perror("error");
+		}
+		free(line);
+		_free(tok);
+		exit(0);
+	}
+	else
+	wait(NULL);
 	free(line);
 	_free(tok);
-	exit(3);
-}
-if (pid == 0)
-{
-res = execve(tok[0], tok, NULL);
-if (res == -1)
-{
-	perror("error");
-}
-free(line);
-_free(tok);
-exit(0);
-}
-else
-wait(NULL);
-free(line);
-_free(tok);
 }
 
 /**
