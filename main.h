@@ -8,6 +8,7 @@
 #include <sys/wait.h>
 #include <sys/types.h>
 
+extern char **environ;
 int prompt(void);
 char *_read(void);
 char **token(char *line, char *sep);
@@ -29,4 +30,5 @@ char *_strncat(char *dest, char *src, int n);
 char *_strncpy(char *dest, char *src, int n);
 int _strcmp(char *s1, char *s2);
 int wordcount(char *string, char delim);
+
 #endif
