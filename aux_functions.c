@@ -40,7 +40,7 @@ void exec(char **tok, char *line)
 	{
 		perror("error");
 		free(line);
-		_free(tok);
+		free(tok);
 		exit(3);
 	}
 	if (pid == 0)
@@ -51,13 +51,13 @@ void exec(char **tok, char *line)
 			perror("error");
 		}
 		free(line);
-		_free(tok);
+		free(tok);
 		exit(0);
 	}
 	else
 	wait(NULL);
 	free(line);
-	_free(tok);
+	free(tok);
 }
 
 /**
@@ -121,17 +121,19 @@ char *_read(void)
 	size_t nread;
 	int i = 0;
 
-	line = malloc(sizeof(char) * 1024);
-	if (line == NULL)
-	{
-		free(line);
-		return (0);
-	}
 	nread = getline(&line, &len, stdin);
 	if ((int)nread == -1)
 	{
-		perror("Read Error");
 		free(line);
+		if (feof(stdin))
+		{
+			exit(EXIT_SUCCESS);
+		}
+		else
+		{
+			perror("error");
+			exit(EXIT_FAILURE);
+		}
 	}
 	for (i = 0; line[i] != '\0'; i++)
 	{
