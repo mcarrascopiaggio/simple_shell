@@ -28,11 +28,11 @@ while (1)
 	{
 		printf("%s\n", tok[i]);
 	}
+	exec(tok, line);
 	if (line)
 	{
 		free(line);
 	}
-	exec(tok, av, env);
 }
 return (0);
 }

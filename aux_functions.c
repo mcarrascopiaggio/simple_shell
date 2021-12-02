@@ -1,6 +1,4 @@
 #include "main.h"
-#include <stdio.h>
-#include <stdlib.h>
 
 /**
  * wordcount - count the words using pased separator
@@ -27,41 +25,39 @@ int wordcount(char *string, char delim)
 /**
 *exec - exec a command with arg and env
 *@tok: array of tokenized line input
-*@av: vector of arguments.
-*@env: acces to the enviroment variables
+*@line: output of read for free after use
 *Return: 0
 */
 
-void exec(char **tok, char **av, char **env)
+void exec(char **tok, char *line)
 {
-	int res;
-	pid_t pid;
-	(void)env;
-	(void)av;
+int res;
+pid_t pid;
 
-	pid = fork();
+pid = fork();
 
-	if (pid == -1)
-	{
-		perror("error");
-		free(tok);
-		exit(3);
-	}
-	if (pid == 0)
-	{
-		res = execve(tok[0], tok, NULL);
-		if (res == -1)
-		{
-			perror("error");
-		}
-		free(tok);
-		exit(0);
-	}
-	else
-	{
-		wait(NULL);
-	}
-	free(tok);
+if (pid == -1)
+{
+	perror("error");
+	free(line);
+	_free(tok);
+	exit(3);
+}
+if (pid == 0)
+{
+res = execve(tok[0], tok, NULL);
+if (res == -1)
+{
+	perror("error");
+}
+free(line);
+_free(tok);
+exit(0);
+}
+else
+wait(NULL);
+free(line);
+_free(tok);
 }
 
 /**
@@ -72,12 +68,13 @@ void exec(char **tok, char **av, char **env)
  */
 char **token(char *line, char *sep)
 {
-	int bufsize = wordcount(line, ' ');
+	/**int bufsize = wordcount(line, ' ');*/
 	int i = 0;
 	char *tok = NULL;
 	char **tokarray = NULL;
 
-	tokarray = malloc(sizeof(char *) * (bufsize + 1));
+	/**tokarray = malloc(sizeof(char *) * (bufsize + 1));*/
+	tokarray = malloc(1024);
 	if (!tokarray)
 	{
 		free(tokarray);
@@ -91,7 +88,7 @@ char **token(char *line, char *sep)
 		i++;
 	}
 	tokarray[i] = NULL;
-return (tokarray);
+	return (tokarray);
 }
 
 /**
@@ -102,18 +99,13 @@ return (tokarray);
 
 int prompt(void)
 {
-	int first_time = 1;
-	char *clear_string = "'\0'"; /** ver si funciona*/
-/**isatty() returns 1 if fd is an open file descriptor referring to a termin*/
-	if (isatty(STDIN_FILENO) == 1)
-	{
+	/**int first_time = 1;
 		if (first_time == 1)
 		{
-			write(STDOUT_FILENO, clear_string, 1);
+			write(STDOUT_FILENO, "\e[1;1H\e[2J", 12);
 			first_time = 0;
-		}
+		}*/
 	write(STDOUT_FILENO, "$  ", 4);
-	}
 return (0);
 }
 
