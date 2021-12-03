@@ -25,7 +25,8 @@ free(tok);
 
 char **exec_path(char **tok, char **path)
 {
-	int len = 0;
+	/* len = 1 for "/"*/
+	int len = 1;
 	int i = 0;
 	int tmp = 0;
 	char *concat = NULL;
@@ -34,7 +35,8 @@ char **exec_path(char **tok, char **path)
 	{
 		len = strlen(path[i]) + strlen(tok[0]);
 		concat = malloc(sizeof(char) * len);
-		concat = _strcat(path[i], tok[0]);
+		concat = _strcat(path[i], "/");
+		concat = _strcat(concat, tok[0]);
 		printf("%s\n", concat);
 		tmp = access(concat, X_OK);
 		if (tmp == 0)
