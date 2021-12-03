@@ -68,13 +68,13 @@ void exec(char **tok, char *line)
  */
 char **token(char *line, char *sep)
 {
-	/**int bufsize = wordcount(line, ' ');*/
+	int bufsize = wordcount(line, ' ');
 	int i = 0;
 	char *tok = NULL;
 	char **tokarray = NULL;
 
-	/**tokarray = malloc(sizeof(char *) * (bufsize + 1));*/
-	tokarray = malloc(1024);
+	tokarray = malloc(sizeof(char *) * (bufsize + 1));
+	/**tokarray = malloc(1024);*/
 	if (!tokarray)
 	{
 		free(tokarray);
@@ -99,12 +99,6 @@ char **token(char *line, char *sep)
 
 int prompt(void)
 {
-	/**int first_time = 1;
-		if (first_time == 1)
-		{
-			write(STDOUT_FILENO, "\e[1;1H\e[2J", 12);
-			first_time = 0;
-		}*/
 	write(STDOUT_FILENO, "$  ", 4);
 return (0);
 }
