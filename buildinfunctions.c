@@ -20,7 +20,7 @@ int env_shs(void)
 
 	for (i = 0; environ[i] != NULL; i++)
 	{
-		puts(environ[i]);
+		_puts(environ[i]);
 	}
 printf("this is the env function\n");
 return (0);
