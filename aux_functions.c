@@ -74,7 +74,6 @@ char **token(char *line, char *sep)
 	char **tokarray = NULL;
 
 	tokarray = malloc(sizeof(char *) * (bufsize + 1));
-	/**tokarray = malloc(1024);*/
 	if (!tokarray)
 	{
 		free(tokarray);

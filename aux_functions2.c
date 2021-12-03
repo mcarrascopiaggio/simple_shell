@@ -26,21 +26,25 @@ free(tok);
 
 char **exec_path(char **tok, char **path)
 {
+	int len = 0;
 	int i = 0;
 	int tmp = 0;
 	char *concat = NULL;
-	/* add malloc for each case*/
+
 	for (i = 0; path[i] != NULL; i++)
 	{
+		len = strlen(path[i]) + strlen(tok[0]);
+		concat = malloc(sizeof(char) * len);
 		concat = _strcat(path[i], tok[0]);
 		printf("%s\n", concat);
 		tmp = access(concat, X_OK);
 		if (tmp == 0)
 		{
+			tok[0] = concat;
+			free(concat);
 			break;
 		}
-		/* add else */
-		tok[0] = concat;
+		free(concat);
 	}
 return (tok);
 }
