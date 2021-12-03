@@ -1,13 +1,13 @@
 #include "main.h"
 
 /**
-*_strchr - print the character where c appear..
+*checkc - print the character where c appear..
 *@s: the address of memory to new str.
 *@c: the matching character.
 *Return: Always 0.
 */
 
-char *_strchr(char *s, char c)
+int checkc(char *s, char c)
 {
 	int i;
 
@@ -18,10 +18,10 @@ char *_strchr(char *s, char c)
 	}
 	if (s[i] == c)
 	{
-		return (s + i);
+		return (1);
 	}
 	else
 	{
-		return ('\0');
+		return (0);
 	}
 }

@@ -1,6 +1,6 @@
 #include "main.h"
 /**
-*_strcat - swaps values
+*_strcat - concatenates two strings
 *@src: character source
 *@dest: character destination
 *Return: Always 0.

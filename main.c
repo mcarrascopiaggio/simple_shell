@@ -21,6 +21,7 @@ while (1)
 {
 	prompt();
 	line = _read();
+	/* ad check*/
 	printf("%s\n", line);
 	tok = token(line, " ");
 
