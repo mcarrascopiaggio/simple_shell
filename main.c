@@ -13,6 +13,7 @@ int main(int ac, char **av, char **env)
 	char *line = NULL;
 	char **tok = NULL;
 	int i = 0;
+	int (*_check_build)(void);
 	(void)ac;
 	(void)av;
 	(void)env;
@@ -29,7 +30,15 @@ while (1)
 	{
 		printf("%s\n", tok[i]);
 	}
+	_check_build = get_op_func(tok);
+	if (_check_build == NULL)
+	{
 	exec(tok, line);
+	}
+	else
+	{
+	_check_build();
+	}
 }
 return (0);
 }

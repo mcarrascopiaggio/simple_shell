@@ -9,11 +9,29 @@
 #include <sys/types.h>
 
 extern char **environ;
+
+/**
+ * struct op - Struct op
+ *
+ * @tok: The command enter
+ * @f: The function associated
+ */
+typedef struct op
+{
+	char *op;
+	int (*f)(void);
+} op_t;
 int prompt(void);
 char *_read(void);
 char **token(char *line, char *sep);
 void exec(char **tok, char *line);
 void _free( char **tok);
+/**buildin functions*/
+int (*get_op_func(char **tok))(void);
+int env_shs(void);
+int exit_shs(void);
+int cd_shs(void);
+int help_shs(void);
 /**string functions*/
 int _strncmp( char *string1, char *string2, int n);
 char *_strstr(char *haystack, char *needle);
