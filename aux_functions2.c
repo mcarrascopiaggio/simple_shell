@@ -17,13 +17,13 @@ free(tok);
 }
 
 /**
- *exec_path - checks fro comand and execute
+ *concat_path - checks fro comand and execute
  *@tok: vector of comand and arguments
  *@path: array of dir
  *Return: pointer to the full path
  */
 
-char **exec_path(char **tok, char **path)
+char **concat_path(char **tok, char **path)
 {
 	/* len = 1 for "/"*/
 	int len = 1;
@@ -82,11 +82,11 @@ int checkc(char *s, char c)
  *Return: pointer to directories string
  */
 
-char **_getenv(void)
+char *_getenv(void)
 {
 	int i = 0, j = 0, match = 0;
 	char *var = "PATH";
-	char **arr = NULL;
+	char *arr = NULL;
 
 
 for (i = 0; environ[i] != NULL; i++)
@@ -99,8 +99,8 @@ for (i = 0; environ[i] != NULL; i++)
 	if (match == 0)
 	{
 		strtok(environ[i], "=");
-		*arr = (strtok(NULL, "="));
-		printf("ARR is %s\n", *arr);
+		arr = (strtok(NULL, "="));
+		printf("ARR is %s\n", arr);
 	}
 
 }

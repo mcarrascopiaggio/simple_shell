@@ -68,12 +68,13 @@ void exec(char **tok, char *line)
  */
 char **token(char *line, char *sep)
 {
-	int bufsize = wordcount(line, ' ');
+	/**int bufsize = wordcount(line, ' ');*/
 	int i = 0;
 	char *tok = NULL;
 	char **tokarray = NULL;
 
-	tokarray = malloc(sizeof(char *) * (bufsize + 1));
+	/**tokarray = malloc(sizeof(char *) * (bufsize + 1));*/
+	tokarray = malloc(1024);
 	if (!tokarray)
 	{
 		free(tokarray);
