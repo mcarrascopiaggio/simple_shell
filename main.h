@@ -26,6 +26,8 @@ char *_read(void);
 char **token(char *line, char *sep);
 void exec(char **tok, char *line);
 void _free( char **tok);
+char **_getenv(void);
+char **exec_path(char **tok, char **path);
 /**buildin functions*/
 int (*get_op_func(char **tok))(void);
 int env_shs(void);

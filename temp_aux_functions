@@ -31,11 +31,8 @@ int wordcount(char *string, char delim)
 
 void exec(char **tok, char *line)
 {
-	int res = 0;
-	int check_path = 0;
+	int res;
 	pid_t pid;
-	char **dir = NULL;
-	int i = 0;
 
 	pid = fork();
 
@@ -48,36 +45,14 @@ void exec(char **tok, char *line)
 	}
 	if (pid == 0)
 	{
-		check_path = checkc(line, '/');
-		if (check_path == 1)
+		res = execve(tok[0], tok, NULL);
+		if (res == -1)
 		{
-			res = execve(tok[0], tok, NULL);
-			if (res == -1)
-			{
-				perror("error");
-			}
-			free(line);
-			free(tok);
-			exit(0);
+			perror("error");
 		}
-		else
-		{
-			dir = _getenv();/**obtener el path del environ*/
-			printf("dir es: %s\n", *dir);
-			tok = exec_path(tok, dir);/**concatenarlo y devolver un tok con ruta completa*/
-			for (i = 0; tok[i] != 0; i++)
-			{
-				printf("este es el nuevo %s\n", tok[i]);
-			}
-			res = execve(tok[0], tok, NULL);
-			if (res == -1)
-			{
-				perror("error");
-			}
-			free(line);
-			free(tok);
-			exit(0);
-		}
+		free(line);
+		free(tok);
+		exit(0);
 	}
 	else
 	wait(NULL);
