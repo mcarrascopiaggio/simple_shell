@@ -30,10 +30,11 @@ char **concat_path(char **tok, char **path)
 	int i = 0;
 	int tmp = 0;
 	char *concat = NULL;
+	char **concatstr = NULL;
 
 	for (i = 0; path[i] != NULL; i++)
 	{
-		len = strlen(path[i]) + strlen(tok[0]);
+		len = _strlen(path[i]) + _strlen(tok[0]);
 		concat = malloc(sizeof(char) * len);
 		concat = _strcat(path[i], "/");
 		concat = _strcat(concat, tok[0]);
@@ -41,13 +42,20 @@ char **concat_path(char **tok, char **path)
 		tmp = access(concat, X_OK);
 		if (tmp == 0)
 		{
-			tok[0] = concat;
+			concatstr[0] = malloc(sizeof(char) * len);
+			concatstr[0] = concat;
 			free(concat);
 			break;
 		}
 		free(concat);
 	}
-return (tok);
+	for (i = 1; tok[i] != NULL; i++)
+	{
+		concatstr[i] = malloc(sizeof(char) * _strlen(tok[i]));
+		concatstr[i] = tok[i];
+	}
+	free(tok);
+return (concatstr);
 }
 
 
