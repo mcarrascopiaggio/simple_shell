@@ -1,6 +1,6 @@
 # Simple_Shell Project
 
-![image](https://github.com/mcarrascopiaggio/PreProjectShell/blob/master/images/Simple_Shell.png)
+![image](https://github.com/mcarrascopiaggio/simple_shell/blob/master/images/simple_shell.png)
 
 We are Software Engineer students at  [Holberton School](https://www.holbertonschool.com/) and at the close of our first trimester we have to develop our own simple shell in c language.
 
@@ -29,7 +29,7 @@ We are Software Engineer students at  [Holberton School](https://www.holbertonsc
 - Use system calls only when is needed to.
 
 ## Program flow
-![image](images/flow_chart.png)
+![image](https://github.com/mcarrascopiaggio/simple_shell/blob/main/images/flow_chart.png)
 
 ## File Structure
 #### Header
