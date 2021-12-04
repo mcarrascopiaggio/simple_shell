@@ -1,0 +1,19 @@
+.TH 2021-12-04 LINUX
+
+.SH NAME
+.B simple_shell - hsh
+
+.SH DESCRIPTION
+.br
+Simple shell is a simple command interpreter that executes commands read from the standard input or from a file
+.br
+
+.SH SYNOPSIS
+.br
+.B ./hsh
+.br
+.I display prompt and wait for an input such as: command [arguments] [other]
+.br
+.SH RETURN
+.SH AUTHOR
+Written by Marcela Carrasco & Eric Altez.
