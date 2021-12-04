@@ -21,9 +21,6 @@ typedef struct op
 	char *op;
 	int (*f)(void);
 } op_t;
-int _strlen(char *s);
-int count_to_sep(char *s, char *sep);
-int _count_char(char *s);
 int prompt(void);
 char *_read(void);
 char **token(char *line, char *sep);
@@ -56,4 +53,6 @@ int _strcmp(char *s1, char *s2);
 int wordcount(char *string, char delim);
 int _putchar(char c);
 void _puts(char *str);
+int _strlen(char *s);
+int count_to_sep(char *s, char *sep);
 #endif

@@ -68,36 +68,26 @@ void exec(char **tok, char *line)
  */
 char **token(char *line, char *sep)
 {
-	int aux = 1;
+	/**int bufsize = wordcount(line, ' ');*/
 	int i = 0;
 	char *tok = NULL;
 	char **tokarray = NULL;
-	/** count the bytes in fist word of line */
-	aux = count_to_sep(line, " ");
-	/** allocate dinamic memory fo first tok*/
-	tokarray[0] = malloc(sizeof(char) * aux);
-	/**check correct allocation*/
-	if (!tokarray[0])
+
+	/**tokarray = malloc(sizeof(char *) * (bufsize + 1));*/
+	tokarray = malloc(1024);
+	if (!tokarray)
 	{
-		free(tokarray[0]);
+		free(tokarray);
 		exit(3);
 	}
-	/** save first tok*/
 	tok = strtok(line, sep);
-	tokarray[0] = tok;
 	while (tok != NULL)
 	{
-		if (i != 0)
-		{
-			tok = strtok(NULL, sep);
-			tokarray[i] = malloc(sizeof(char) * _strlen(tok));
-			tokarray[i] = tok;
-		}
+		tokarray[i] = tok;
+		tok = strtok(NULL, sep);
 		i++;
 	}
 	tokarray[i] = NULL;
-	if (line)
-		free(line);
 	return (tokarray);
 }
 
