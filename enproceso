@@ -31,8 +31,11 @@ int wordcount(char *string, char delim)
 
 void exec(char **tok, char *line)
 {
-	int res;
+	int res = 0;
+	int check_path = 0;
 	pid_t pid;
+	char *dir = NULL;
+	int i = 0;
 
 	pid = fork();
 
@@ -45,14 +48,33 @@ void exec(char **tok, char *line)
 	}
 	if (pid == 0)
 	{
-		res = execve(tok[0], tok, NULL);
-		if (res == -1)
+		check_path = checkc(line, '/');
+		if (check_path == 1)
 		{
-			perror("error");
+			res = execve(tok[0], tok, NULL);
+			if (res == -1)
+			{
+				perror("error");
+			}
+			free(line);
+			free(tok);
+			exit(0);
 		}
-		free(line);
-		free(tok);
-		exit(0);
+		else
+		{
+			printf("soy solo un comando");
+			dir = getenv("PATH");
+			printf("dir es: %s\n", dir);
+			exec_path(tok, dir);
+			res = execve(tok[0], tok, NULL);
+			if (res == -1)
+			{
+				perror("error");
+			}
+			free(line);
+			free(tok);
+			exit(0);
+		}
 	}
 	else
 	wait(NULL);

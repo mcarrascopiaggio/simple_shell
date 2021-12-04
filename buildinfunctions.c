@@ -7,7 +7,7 @@
 int exit_shs(void)
 {
 printf("this is the exit function\n");
-return (0);
+return (3);
 }
 /**
 *env_shs - our env function
@@ -23,7 +23,7 @@ int env_shs(void)
 		_puts(environ[i]);
 	}
 printf("this is the env function\n");
-return (0);
+return (1);
 }
 /**
 *cd_shs - our cd function
@@ -33,7 +33,7 @@ return (0);
 int cd_shs(void)
 {
 printf("this is the cd function\n");
-return (0);
+return (1);
 }
 /**
 *help_shs - our help function
@@ -43,5 +43,5 @@ return (0);
 int help_shs(void)
 {
 printf("this is the help function\n");
-return (0);
+return (1);
 }

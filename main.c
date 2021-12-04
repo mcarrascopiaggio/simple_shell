@@ -13,16 +13,16 @@ int main(int ac, char **av, char **env)
 	char *line = NULL;
 	char **tok = NULL;
 	int i = 0;
+	int status = 1;
 	int (*_check_build)(void);
 	(void)ac;
 	(void)av;
 	(void)env;
 
-while (1)
+while (status == 1)
 {
 	prompt();
 	line = _read();
-	/* ad check*/
 	printf("%s\n", line);
 	tok = token(line, " ");
 
@@ -37,7 +37,7 @@ while (1)
 	}
 	else
 	{
-	_check_build();
+	status = _check_build();
 	}
 }
 return (0);
