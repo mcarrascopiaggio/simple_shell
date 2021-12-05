@@ -14,7 +14,6 @@ Display prompt and wait for an input such as:
 [\fB\-others\fR]
 
 .SH DESCRIPTION
-.br
 Simple shell is a simple command interpreter that executes commands read from the standard input or from a file.
 .TP
 Implement the built-in functions:
@@ -23,7 +22,23 @@ Implement the built-in functions:
 .IP
 .B exit
 - Close the shell.
+.IP
+.B cd
+- Change current directory of the proyect.
+.IP
+.B help
+- Displays program information.
 .TP
 Works in interactive and non interactive mode.
+.SH EXECUTION EXAMPLES
+.br
+Write "./hsh" to run the shell.
+.TP
+Write command "ls" and press enter to obtain a list of folders and files in the current work directory
+.TP
+or
+.TP
+Write "/bin/ls" and press enter to obtain the same result.
+
 .SH AUTHOR
 Written by Marcela Carrasco & Eric Altez.
