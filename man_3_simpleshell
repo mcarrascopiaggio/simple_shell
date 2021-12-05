@@ -1,19 +1,29 @@
 .TH 2021-12-04 LINUX
 
 .SH NAME
+.br
 .B simple_shell - hsh
-
-.SH DESCRIPTION
 .br
-Simple shell is a simple command interpreter that executes commands read from the standard input or from a file
-.br
-
 .SH SYNOPSIS
 .br
 .B ./hsh
+.TP
+Display prompt and wait for an input such as: 
+.B command 
+[\fB\-arguments\fR] 
+[\fB\-others\fR]
+
+.SH DESCRIPTION
 .br
-.I display prompt and wait for an input such as: command [arguments] [other]
-.br
-.SH RETURN
+Simple shell is a simple command interpreter that executes commands read from the standard input or from a file.
+.TP
+Implement the built-in functions:
+.B env
+- Prints enviroment information.
+.IP
+.B exit
+- Close the shell.
+.TP
+Works in interactive and non interactive mode.
 .SH AUTHOR
 Written by Marcela Carrasco & Eric Altez.
