@@ -7,7 +7,7 @@
 int exit_shs(void)
 {
 printf("this is the exit function\n");
-return (3);
+exit(3);
 }
 /**
 *env_shs - our env function

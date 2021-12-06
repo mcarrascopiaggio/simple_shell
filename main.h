@@ -11,6 +11,7 @@
 
 extern char **environ;
 
+#define SEP " \t\n"
 /**
  * struct op - Struct op
  *

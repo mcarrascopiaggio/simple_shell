@@ -12,38 +12,23 @@ int main(int ac, char **av, char **env)
 {
 	char *line = NULL; /**char *path = NULL;*/
 	char **tok = NULL; /**char **tok_path = NULL;*/
-	int i = 0;
 	int status = 1, check_path = 0;
 	int (*_check_build)(void);
-	int interactive = 0;
-	(void)ac;
-	(void)av;
-	(void)env;
-	interactive = (isatty(STDIN_FILENO));
-
+	(void)ac, (void)av, (void)env;
 
 while (status == 1)
 {
-	if (interactive == 1)
-	{
-		prompt();
-	}
-	else
-	{
-		status = 0;
-	}
+	prompt();
 	signal(SIGINT, sigintHandler);
 	line = _read();
 	if (line[0] != 0)
 	{
-	printf("%s\n", line);
-	tok = token(line, " ");
-
-	for (i = 0; tok[i] != NULL; i++)
+	tok = token(line, SEP);
+	if (tok[0])
 	{
-		printf("%s\n", tok[i]);
-	}
 	_check_build = get_op_func(tok);
+	printf("built");
+
 	if (_check_build == NULL)
 	{
 		check_path = checkc(line, '/');
@@ -67,7 +52,8 @@ while (status == 1)
 	}
 	else
 	{
-	status = _check_build();
+		_check_build();
+	}
 	}
 	}
 }

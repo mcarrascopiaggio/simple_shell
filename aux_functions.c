@@ -1,5 +1,4 @@
 #include "main.h"
-
 /**
  * wordcount - count the words using pased separator
  * @string: pointer to the string to count
@@ -68,26 +67,31 @@ void exec(char **tok, char *line)
  */
 char **token(char *line, char *sep)
 {
-	/**int bufsize = wordcount(line, ' ');*/
+	int bufsize = wordcount(line, ' ');
 	int i = 0;
 	char *tok = NULL;
 	char **tokarray = NULL;
+	(void)sep;
 
-	/**tokarray = malloc(sizeof(char *) * (bufsize + 1));*/
-	tokarray = malloc(1024);
+	tokarray = malloc(sizeof(char *) * (bufsize + 1));
+	printf("bufsize: %d\n", bufsize);
 	if (!tokarray)
 	{
 		free(tokarray);
+		perror("error");
 		exit(3);
 	}
-	tok = strtok(line, sep);
+	tok = strtok(line, SEP);
 	while (tok != NULL)
 	{
+		printf("token: %s\n", tok);
 		tokarray[i] = tok;
-		tok = strtok(NULL, sep);
+		tok = strtok(NULL, SEP);
 		i++;
 	}
+	printf("%d %s\n", i, tok);
 	tokarray[i] = NULL;
+	printf("fin");
 	return (tokarray);
 }
 
@@ -99,7 +103,14 @@ char **token(char *line, char *sep)
 
 int prompt(void)
 {
-	write(STDOUT_FILENO, "$  ", 4);
+	if (isatty(STDIN_FILENO) == 1)
+	{
+		write(STDOUT_FILENO, "$  ", 4);
+	}
+	else
+	{
+		return (0);
+	}
 return (0);
 }
 
@@ -136,12 +147,11 @@ char *_read(void)
 	}
 	if (i >= 2)
 	{
-	line[i - 1] = '\0';
+		line[i - 1] = '\0';
 	}
 	else
 	{
-		prompt();
+		write(STDOUT_FILENO, "$  ", 4);
 	}
-/**free(line); hay que liberarla mas tarde*/
 return (line);
 }

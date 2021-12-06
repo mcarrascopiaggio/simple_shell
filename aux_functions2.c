@@ -129,6 +129,7 @@ int (*get_op_func(char **tok))(void)
 	i = 0;
 	while (ops[i].op)
 	{
+		printf("asd");
 		if (!strcmp(ops[i].op, *tok))
 			return (ops[i].f);
 		i++;
