@@ -15,14 +15,22 @@ int main(int ac, char **av, char **env)
 	int i = 0;
 	int status = 1, check_path = 0;
 	int (*_check_build)(void);
+	int interactive = 0;
 	(void)ac;
 	(void)av;
 	(void)env;
-
+	interactive = (isatty(STDIN_FILENO));
 
 while (status == 1)
 {
-	prompt();
+	if (interactive == 1)
+	{
+		prompt();
+	}
+	else
+	{
+		status = 0;
+	}
 	line = _read();
 	printf("%s\n", line);
 	tok = token(line, " ");
