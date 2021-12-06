@@ -7,6 +7,7 @@
 #include <unistd.h>
 #include <sys/wait.h>
 #include <sys/types.h>
+#include <signal.h>
 
 extern char **environ;
 
@@ -28,6 +29,7 @@ void exec(char **tok, char *line);
 void _free( char **tok);
 char *_getenv(void);
 char **concat_path(char **tok, char **path);
+void sigintHandler(int n);
 /**buildin functions*/
 int (*get_op_func(char **tok))(void);
 int env_shs(void);

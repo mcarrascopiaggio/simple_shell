@@ -2,12 +2,14 @@
 
 /**
  * sigintHandler - ignore control c and conitue the promp
- * sig_num
+ *@n: int
  * Retunr: nothing
  */
 
-void sigintHandler(int sig_num)
+void sigintHandler(int n)
 {
+(void)n;
+
 signal(SIGINT, sigintHandler);
 _putchar(10);
 prompt();

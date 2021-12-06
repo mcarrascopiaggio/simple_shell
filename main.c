@@ -23,6 +23,7 @@ int main(int ac, char **av, char **env)
 
 while (status == 1)
 {
+<<<<<<< HEAD
 	if (interactive == 1)
 	{
 		prompt();
@@ -31,6 +32,10 @@ while (status == 1)
 	{
 		status = 0;
 	}
+=======
+	prompt();
+	signal(SIGINT, sigintHandler);
+>>>>>>> 6662e85644bf26cc089cb575d7eb53cc865439b5
 	line = _read();
 	printf("%s\n", line);
 	tok = token(line, " ");
@@ -47,7 +52,8 @@ while (status == 1)
 			exec(tok, line);
 		else
 		{
-			printf("funcion en proceso");
+			printf("funcion en proceso\n");
+			exit(0);
 			/**path = _getenv();
 			tok_path = token(path, ":");
 			for (i = 0; tok_path[i] != 0; i++)
