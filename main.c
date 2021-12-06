@@ -34,6 +34,8 @@ while (status == 1)
 	}
 	signal(SIGINT, sigintHandler);
 	line = _read();
+	if (line[0] != 0)
+	{
 	printf("%s\n", line);
 	tok = token(line, " ");
 
@@ -50,7 +52,6 @@ while (status == 1)
 		else
 		{
 			printf("funcion en proceso\n");
-			exit(0);
 			/**path = _getenv();
 			tok_path = token(path, ":");
 			for (i = 0; tok_path[i] != 0; i++)
@@ -67,6 +68,7 @@ while (status == 1)
 	else
 	{
 	status = _check_build();
+	}
 	}
 }
 return (0);

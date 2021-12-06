@@ -129,11 +129,19 @@ char *_read(void)
 			exit(EXIT_FAILURE);
 		}
 	}
+	printf("this is the nread check: %d\n", (int)nread);
 	for (i = 0; line[i] != '\0'; i++)
 	{
 		;
 	}
+	if (i >= 2)
+	{
 	line[i - 1] = '\0';
+	}
+	else
+	{
+		prompt();
+	}
 /**free(line); hay que liberarla mas tarde*/
 return (line);
 }
