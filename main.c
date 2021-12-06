@@ -21,9 +21,9 @@ int main(int ac, char **av, char **env)
 	(void)env;
 	interactive = (isatty(STDIN_FILENO));
 
+
 while (status == 1)
 {
-<<<<<<< HEAD
 	if (interactive == 1)
 	{
 		prompt();
@@ -32,10 +32,7 @@ while (status == 1)
 	{
 		status = 0;
 	}
-=======
-	prompt();
 	signal(SIGINT, sigintHandler);
->>>>>>> 6662e85644bf26cc089cb575d7eb53cc865439b5
 	line = _read();
 	printf("%s\n", line);
 	tok = token(line, " ");

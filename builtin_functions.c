@@ -42,6 +42,12 @@ return (1);
 
 int help_shs(void)
 {
-printf("this is the help function\n");
+	_puts("This is the help page\n");
+	_puts("Here is a list of the built-in functions of this simple shell\n");
+	_puts("\n");
+	_puts("cd - Changes directory.\n");
+	_puts("env - Display environment information.\n");
+	_puts("exit - Closes the shell.\n");
+	_puts("help - This page.\n");
 return (1);
 }
