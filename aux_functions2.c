@@ -127,7 +127,7 @@ int (*get_op_func(char **tok))(void)
 	i = 0;
 	while (ops[i].op)
 	{
-		if (!strcmp(ops[i].op, *tok))
+		if (!_strcmp(ops[i].op, *tok))
 			return (ops[i].f);
 		i++;
 	}

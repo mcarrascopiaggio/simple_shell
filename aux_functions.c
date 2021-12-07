@@ -88,7 +88,6 @@ char **token(char *line, char *sep)
 		i++;
 	}
 	tokarray[i] = NULL;
-	printf("fin");
 	return (tokarray);
 }
 

@@ -6,7 +6,7 @@
 
 int exit_hsh(void)
 {
-	exit(3);
+	return (3);
 }
 /**
 *env_hsh - our env function
