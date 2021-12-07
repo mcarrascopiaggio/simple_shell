@@ -1,5 +1,4 @@
 #include "main.h"
-
 /**
 *main - simple shell
 *@ac: number of argumnets
@@ -7,7 +6,6 @@
 *@env: enviorment variables
 *Return: 0
 */
-
 int main(int ac, char **av, char **env)
 {
 	char *line = NULL; /**char *path = NULL;*/
@@ -23,38 +21,25 @@ while (status == 1)
 	line = _read();
 	if (line[0] != 0)
 	{
-	tok = token(line, SEP);
-	if (tok[0])
-	{
-	_check_build = get_op_func(tok);
-	printf("built");
-
-	if (_check_build == NULL)
-	{
-		check_path = checkc(line, '/');
-		if (check_path == 1)
-			exec(tok, line);
-		else
+		tok = token(line, SEP);
+		if (tok[0])
 		{
-			printf("funcion en proceso\n");
-			/**path = _getenv();
-			tok_path = token(path, ":");
-			for (i = 0; tok_path[i] != 0; i++)
+			_check_build = get_op_func(tok);
+			if (_check_build == NULL)
 			{
-				printf("%s\n", tok_path[i]);
+				check_path = checkc(line, '/');
+				if (check_path == 1)
+					exec(tok, line);
+				else
+				{
+					_puts("funcion en proceso\n");
+				}
 			}
-			concat_path(tok, tok_path);
-			for (i = 0; tok[i] != NULL; i++)
+			else
 			{
-				printf("%s\n", tok[i]);
-			}*/
+				_check_build();
+			}
 		}
-	}
-	else
-	{
-		_check_build();
-	}
-	}
 	}
 }
 return (0);

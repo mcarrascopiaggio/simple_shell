@@ -10,20 +10,21 @@
 
 char *_strcat(char *dest, char *src)
 {
-int l;
-int i;
-int j;
-l = 0;
+	int l;
+	int i;
+	int j;
 
-for (j = 0 ; dest[j] != 0 ; j++)
-{
-	l = l + 1;
-}
-for (i = 0 ; src[i] != 0 ; i++)
+	l = 0;
+
+	for (j = 0 ; dest[j] != 0 ; j++)
 	{
-	dest[l + i] = src[i];
+		l = l + 1;
 	}
-dest[l + i] = 0;
+	for (i = 0 ; src[i] != 0 ; i++)
+	{
+		dest[l + i] = src[i];
+	}
+	dest[l + i] = 0;
 return (dest);
 }
 
@@ -37,17 +38,17 @@ return (dest);
 
 int _strcmp(char *s1, char *s2)
 {
-int i;
-int d;
+	int i;
+	int d;
 
-for (i = 0; s1[i] != 0 || s2[i] != 0; i++)
-{
-	d = s1[i] - s2[i];
-	if (d != 0)
+	for (i = 0; s1[i] != 0 || s2[i] != 0; i++)
 	{
-		break;
+		d = s1[i] - s2[i];
+		if (d != 0)
+		{
+			break;
+		}
 	}
-}
 return (d);
 }
 
@@ -61,13 +62,13 @@ return (d);
 
 char *_strcpy(char *dest, char *src)
 {
-int i;
+	int i;
 
-for (i = 0 ; src[i] != 0 ; i++)
+	for (i = 0 ; src[i] != 0 ; i++)
 	{
-	dest[i] = src[i];
+		dest[i] = src[i];
 	}
-dest[i++] = 0;
+	dest[i++] = 0;
 return (dest);
 }
 
@@ -81,13 +82,14 @@ return (dest);
 int _strlen(char *s)
 {
 
-int l;
-int i;
-l = 0;
+	int l;
+	int i;
 
-for (i = 0; s[i] != 0 ; i++)
+	l = 0;
+
+	for (i = 0; s[i] != 0 ; i++)
 	{
-	l = l + 1;
+		l = l + 1;
 	}
 return (l);
 }
@@ -103,21 +105,21 @@ return (l);
 
 char *_strncat(char *dest, char *src, int n)
 {
-int i;
-int l;
-int j;
+	int i;
+	int l;
+	int j;
 
-l = 0;
+	l = 0;
 
-for (j = 0 ; dest[j] != 0 ; j++)
-{
-l = l + 1;
-}
-for (i = 0 ; src[i] != 0 && i < n ; i++)
+	for (j = 0 ; dest[j] != 0 ; j++)
 	{
-	dest[l + i] = src[i];
+		l = l + 1;
 	}
-dest[l + i] = 0;
+	for (i = 0 ; src[i] != 0 && i < n ; i++)
+	{
+		dest[l + i] = src[i];
+	}
+	dest[l + i] = 0;
 return (dest);
 }
 

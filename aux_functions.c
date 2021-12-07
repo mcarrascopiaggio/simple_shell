@@ -74,7 +74,6 @@ char **token(char *line, char *sep)
 	(void)sep;
 
 	tokarray = malloc(sizeof(char *) * (bufsize + 1));
-	printf("bufsize: %d\n", bufsize);
 	if (!tokarray)
 	{
 		free(tokarray);
@@ -84,12 +83,10 @@ char **token(char *line, char *sep)
 	tok = strtok(line, SEP);
 	while (tok != NULL)
 	{
-		printf("token: %s\n", tok);
 		tokarray[i] = tok;
 		tok = strtok(NULL, SEP);
 		i++;
 	}
-	printf("%d %s\n", i, tok);
 	tokarray[i] = NULL;
 	printf("fin");
 	return (tokarray);
@@ -140,7 +137,6 @@ char *_read(void)
 			exit(EXIT_FAILURE);
 		}
 	}
-	printf("this is the nread check: %d\n", (int)nread);
 	for (i = 0; line[i] != '\0'; i++)
 	{
 		;

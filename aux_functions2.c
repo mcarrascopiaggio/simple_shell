@@ -37,7 +37,6 @@ char **concat_path(char **tok, char **path)
 		concat = malloc(sizeof(char) * len);
 		concat = _strcat(path[i], "/");
 		concat = _strcat(concat, tok[0]);
-		printf("%s\n", concat);
 		tmp = access(concat, X_OK);
 		if (tmp == 0)
 		{
@@ -100,7 +99,6 @@ for (i = 0; environ[i] != NULL; i++)
 	{
 		strtok(environ[i], "=");
 		arr = (strtok(NULL, "="));
-		printf("ARR is %s\n", arr);
 	}
 
 }
@@ -118,10 +116,10 @@ int (*get_op_func(char **tok))(void)
 
 
 	op_t ops[] = {
-		{"env", env_shs},
-		{"exit", exit_shs},
-		{"cd", cd_shs},
-		{"help", help_shs},
+		{"env", env_hsh},
+		{"exit", exit_hsh},
+		{"cd", cd_hsh},
+		{"help", help_hsh},
 		{NULL, NULL}
 	};
 	int i;
@@ -129,7 +127,6 @@ int (*get_op_func(char **tok))(void)
 	i = 0;
 	while (ops[i].op)
 	{
-		printf("asd");
 		if (!strcmp(ops[i].op, *tok))
 			return (ops[i].f);
 		i++;

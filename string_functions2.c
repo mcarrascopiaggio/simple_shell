@@ -10,7 +10,7 @@
 
 int _putchar(char c)
 {
-		return (write(1, &c, 1));
+	return (write(1, &c, 1));
 }
 
 
@@ -24,18 +24,18 @@ int _putchar(char c)
 
 int _strncmp(char *string1, char *string2, int n)
 {
-int i = 0;
-int aux1 = 0;
-int aux2 = 0;
+	int i = 0;
+	int aux1 = 0;
+	int aux2 = 0;
 
-for (i = 0; ((string1[i] != 0 || string2[i] != 0) && (i < n)); i++)
-{
-aux1 = string1[i];
-aux2 = string2[i];
+	for (i = 0; ((string1[i] != 0 || string2[i] != 0) && (i < n)); i++)
+	{
+		aux1 = string1[i];
+		aux2 = string2[i];
 
-if (aux1 != aux2)
-	break;
-}
+	if (aux1 != aux2)
+		break;
+	}
 return (aux1 - aux2);
 }
 
@@ -49,11 +49,11 @@ return (aux1 - aux2);
 void _puts(char *str)
 {
 
-int i;
+	int i;
 
-for (i = 0; str[i] != 0 ; i++)
+	for (i = 0; str[i] != 0 ; i++)
 	{
-	_putchar(str[i]);
+		_putchar(str[i]);
 	}
 _putchar(10);
 }
@@ -78,7 +78,7 @@ char *_strstr(char *haystack, char *needle)
 	}
 
 	if (n == 0)
-{
+	{
 		haystack = haystack;
 	}
 	else
@@ -89,17 +89,17 @@ char *_strstr(char *haystack, char *needle)
 			{
 				if (haystack[i + j] != needle[j])
 				{
-				break;
+					break;
 				}
 			}
-		if (j == n)
-		{
-			haystack = haystack + i;
-			break;
-		}
+			if (j == n)
+			{
+				haystack = haystack + i;
+				break;
+			}
 		}
 	}
-	return (haystack);
+return (haystack);
 }
 
 /**

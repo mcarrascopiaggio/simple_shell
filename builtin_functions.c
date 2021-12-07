@@ -1,20 +1,19 @@
 #include "main.h"
 /**
- *exit_shs - our exit function
+ *exit_hsh - our exit function
  *Return: 0
  */
 
-int exit_shs(void)
+int exit_hsh(void)
 {
-printf("this is the exit function\n");
-exit(3);
+	exit(3);
 }
 /**
-*env_shs - our env function
+*env_hsh - our env function
 *Return: 0
 */
 
-int env_shs(void)
+int env_hsh(void)
 {
 	int i = 0;
 
@@ -22,25 +21,23 @@ int env_shs(void)
 	{
 		_puts(environ[i]);
 	}
-printf("this is the env function\n");
 return (1);
 }
 /**
-*cd_shs - our cd function
+*cd_hsh - our cd function
 *Return: 0
 */
 
-int cd_shs(void)
+int cd_hsh(void)
 {
-printf("this is the cd function\n");
-return (1);
+	return (1);
 }
 /**
-*help_shs - our help function
+*help_hsh - our help function
 *Return: 0
 */
 
-int help_shs(void)
+int help_hsh(void)
 {
 	_puts("This is the help page\n");
 	_puts("Here is a list of the built-in functions of this simple shell\n");
