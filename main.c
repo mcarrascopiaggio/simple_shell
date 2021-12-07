@@ -44,6 +44,11 @@ while (status == 1)
 				free(tok);
 			}
 		}
+		else
+		{
+			free(line);
+			free(tok);
+		}
 	}
 }
 return (0);

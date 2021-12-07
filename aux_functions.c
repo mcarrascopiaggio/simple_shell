@@ -146,7 +146,7 @@ char *_read(void)
 	}
 	else
 	{
-		write(STDOUT_FILENO, "$  ", 4);
+		return (line);
 	}
 return (line);
 }
