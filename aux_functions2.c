@@ -17,13 +17,13 @@ free(tok);
 }
 
 /**
- *concat_path - checks fro comand and execute
+ *concat_path - create full path command
  *@tok: vector of comand and arguments
- *@path: array of dir
+ *@path_list: array of dir
  *Return: pointer to the full path
  */
 
-char **concat_path(char **tok, char **path)
+char **concat_path(char **tok, char *path_list)
 {
 	/* len = 1 for "/"*/
 	int len = 1;
@@ -31,22 +31,15 @@ char **concat_path(char **tok, char **path)
 	int tmp = 0;
 	char *concat = NULL;
 
-	for (i = 0; path[i] != NULL; i++)
-	{
-		len = strlen(path[i]) + strlen(tok[0]);
-		concat = malloc(sizeof(char) * len);
-		concat = _strcat(path[i], "/");
-		concat = _strcat(concat, tok[0]);
-		tmp = access(concat, X_OK);
-		if (tmp == 0)
-		{
-			tok[0] = concat;
-			free(concat);
-			break;
-		}
-		free(concat);
-	}
-return (tok);
+	/**tokenizad path_lis
+	 * por cada token: crear un nodo al final
+	 * guardar es node el token
+	 */
+
+	/**concatenar el cada nodo con "/" y con comando tok0"/
+	 *con acces chequear en donde esta*/
+	
+	return (tok);
 }
 
 
@@ -77,7 +70,7 @@ int checkc(char *s, char c)
 }
 
 /**
- *_getenv - gets enviroment var value
+ *_getenv - gets PATH value
  *Return: pointer to directories string
  */
 
@@ -85,7 +78,7 @@ char *_getenv(void)
 {
 	int i = 0, j = 0, match = 0;
 	char *var = "PATH";
-	char *arr = NULL;
+	char *path_list = NULL;
 
 
 for (i = 0; environ[i] != NULL; i++)
@@ -98,11 +91,12 @@ for (i = 0; environ[i] != NULL; i++)
 	if (match == 0)
 	{
 		strtok(environ[i], "=");
-		arr = (strtok(NULL, "="));
+		path_list = (strtok(NULL, "="));
 	}
 
 }
-return (arr);
+_puts("funcion getenv ok");
+return (path_list);
 }
 
 /**

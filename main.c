@@ -32,7 +32,7 @@ while (status == 1)
 					exec(tok, line);
 				else
 				{
-					_puts("funcion en proceso\n");
+					_getenv(); /**en proceso full path*/
 					free(line);
 					free(tok);
 				}
