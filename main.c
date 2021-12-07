@@ -40,16 +40,11 @@ while (status == 1)
 			else
 			{
 				status = _check_build();
-				/**free(line);*/
-				/**free(tok);*/
+				free(line);
+				free(tok);
 			}
 		}
 	}
-if (status == 3)
-{
-free(line);
-free(tok);
-}
 }
 return (0);
 }
