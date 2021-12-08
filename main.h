@@ -33,7 +33,7 @@ typedef struct list_s
 typedef struct op
 {
 	char *op;
-	int (*f)(void);
+	int (*f)(int);
 } op_t;
 int prompt(void);
 char *_read(void);
@@ -45,11 +45,11 @@ char **concat_path(char **tok, char *path_list);
 void sigintHandler(int n);
 int _free_str(char **tok, char *line);
 /**buildin functions*/
-int (*get_op_func(char **tok))(void);
-int env_hsh(void);
-int exit_hsh(void);
-int cd_hsh(void);
-int help_hsh(void);
+int (*get_op_func(char **tok))(int);
+int env_hsh(int);
+int exit_hsh(int);
+int cd_hsh(int);
+int help_hsh(int);
 /**list functions*/
 size_t print_list(const list_t *h);
 size_t list_len(const list_t *h);

@@ -14,3 +14,21 @@ free(line);
 
 return (1);
 }
+
+/**
+ *concat_path - fin the full path
+ *@tok: array of tokens. Return of token
+ *@path:array of directorys. Return of getenv
+ *Retunr: a pointer to the new tok
+ */
+/**
+char **concat_path(char **tok, char **path)
+{
+list_t token_path;
+
+token_path = malloc(1024);
+
+token(*path, ":");
+return (tok);
+}
+*/

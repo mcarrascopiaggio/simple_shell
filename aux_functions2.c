@@ -79,7 +79,7 @@ return (path_list);
  * Return: the function
  */
 
-int (*get_op_func(char **tok))(void)
+int (*get_op_func(char **tok))(int)
 {
 
 

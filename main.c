@@ -9,7 +9,7 @@
 int main(int ac, char **av, char **env)
 {
 char *line = NULL, **tok = NULL;
-int status = 1, check_path = 0, (*_check_build)(void);
+int status = 1, check_path = 0, (*_check_build)(int);
 (void)ac, (void)av, (void)env;
 	while (status == 1)
 {
@@ -35,7 +35,7 @@ int status = 1, check_path = 0, (*_check_build)(void);
 			}
 			else
 			{
-				status = _check_build();
+				status = _check_build(0);
 				_free_str(tok, line);
 			}
 		}
