@@ -8,12 +8,10 @@
 */
 int main(int ac, char **av, char **env)
 {
-	char *line = NULL; /**char *path = NULL;*/
-	char **tok = NULL; /**char **tok_path = NULL;*/
-	int status = 1, check_path = 0;
-	int (*_check_build)(void);
-	(void)ac, (void)av, (void)env;
-while (status == 1)
+char *line = NULL, **tok = NULL;
+int status = 1, check_path = 0, (*_check_build)(void);
+(void)ac, (void)av, (void)env;
+	while (status == 1)
 {
 	prompt();
 	signal(SIGINT, sigintHandler);
