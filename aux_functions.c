@@ -30,9 +30,8 @@ int wordcount(char *string, char delim)
 
 int exec(char **tok, char *line)
 {
-	int res;
+	int res, wstatus, statuscode;
 	pid_t pid;
-	int wstatus = 0;
 
 	pid = fork();
 
@@ -59,11 +58,11 @@ int exec(char **tok, char *line)
 		wait(&wstatus);
 		if (WIFEXITED(wstatus))
 		{
-		WEXITSTATUS(wstatus);
+			statuscode = WEXITSTATUS(wstatus);
 		}
 		free(line);
 		free(tok);
-		return (wstatus);
+		return (statuscode);
 	}
 return (wstatus);
 }
