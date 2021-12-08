@@ -38,7 +38,7 @@ while (status == 1)
 				status = _check_build();
 				_free_str(tok, line);
 				if (status == 3)
-					exit(2);
+					exit(EXIT_SUCCESS);
 			}
 		}
 		else
