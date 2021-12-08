@@ -14,16 +14,16 @@ extern char **environ;
 #define SEP " \t\n"
 
 /**
- *struct list_s- Node Structure
+ *struct list_s - Node Structure
  *@str: full path
- *@netx: pointer to next node
+ *@next: pointer to next node
  */
 
 typedef struct list_s
 {
-char *str;
-struct list_s *next;
-}list_t;
+	char *str;
+	struct list_s *next;
+} list_t;
 
 /**
  *struct op - Struct op
