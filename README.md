@@ -43,8 +43,11 @@ In these files you will find the developed functions linked to the critical proc
 #### Builting functions
 In this section are the functions developed for the implementation of the builtin specified in the scope section.
 #### String functions
-
 The list of functions allowed for use in the project left out many functions for handling strings that we need to use for the development of the functions mentioned above. In this section are the same.
+#### List_functions
+In this list we have our functions to manage linked-list
+
+
 ## Compilation
 
 This shell was compiled this way:

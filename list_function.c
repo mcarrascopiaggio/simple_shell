@@ -23,7 +23,7 @@ else
 		}
 		else
 		{
-		printf("[%d] %s\n", h->len, h->str);
+		printf("%s\n",  h->str);
 		}
 		cnodes++;
 		h = h->next; /** way to move from node to node */
@@ -72,7 +72,6 @@ for (len_str = 0; str[len_str] != 0; len_str++)
 {/**count str for len*/
 }
 new_node->str = strdup(str);/**assign value a str of the new*/
-new_node->len = len_str++;/**assig len value a len of the new*/
 new_node->next = *head;/**put the new node before the first*/
 *head = new_node;/**redirectin the old first the new*/
 return (new_node);
@@ -99,7 +98,6 @@ for (l = 0; str[l] != 0; l++)
 ;
 }
 new->str = strdup(str);/**asignation*/
-new->len = l;
 new->next = NULL;
 if (*head == NULL)/**case exist only one node*/
 {
