@@ -16,32 +16,6 @@ for (i = 0 ; tok[i] != NULL; i++)
 free(tok);
 }
 
-/**
- *concat_path - create full path command
- *@tok: vector of comand and arguments
- *@path_list: array of dir
- *Return: pointer to the full path
- */
-
-char **concat_path(char **tok, char *path_list)
-{
-	/* len = 1 for "/"*/
-	int len = 1;
-	int i = 0;
-	int tmp = 0;
-	char *concat = NULL;
-
-	/**tokenizad path_lis
-	 * por cada token: crear un nodo al final
-	 * guardar es node el token
-	 */
-
-	/**concatenar el cada nodo con "/" y con comando tok0"/
-	 *con acces chequear en donde esta*/
-	
-	return (tok);
-}
-
 
 /**
 *checkc - print the character where c appear..

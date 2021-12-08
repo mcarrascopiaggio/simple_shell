@@ -43,6 +43,7 @@ void _free(char **tok);
 char *_getenv(void);
 char **concat_path(char **tok, char *path_list);
 void sigintHandler(int n);
+int _free_str(char **tok, char *line);
 /**buildin functions*/
 int (*get_op_func(char **tok))(void);
 int env_hsh(void);

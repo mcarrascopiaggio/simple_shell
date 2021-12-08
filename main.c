@@ -13,7 +13,6 @@ int main(int ac, char **av, char **env)
 	int status = 1, check_path = 0;
 	int (*_check_build)(void);
 	(void)ac, (void)av, (void)env;
-
 while (status == 1)
 {
 	prompt();
@@ -33,21 +32,18 @@ while (status == 1)
 				else
 				{
 					_getenv(); /**en proceso full path*/
-					free(line);
-					free(tok);
+					_free_str(tok, line);
 				}
 			}
 			else
 			{
 				status = _check_build();
-				free(line);
-				free(tok);
+				_free_str(tok, line);
 			}
 		}
 		else
 		{
-			free(line);
-			free(tok);
+			_free_str(tok, line);
 		}
 	}
 }

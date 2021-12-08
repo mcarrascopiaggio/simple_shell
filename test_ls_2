@@ -1,2 +1,9 @@
 /bin/ls
-/bin/ls
+/bin//ls
+env
+cd
+help
+/bin/ls -l
+  
+exit
+
