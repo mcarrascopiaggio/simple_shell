@@ -38,7 +38,7 @@ typedef struct op
 int prompt(void);
 char *_read(void);
 char **token(char *line, char *sep);
-void exec(char **tok, char *line);
+int exec(char **tok, char *line);
 void _free(char **tok);
 char *_getenv(void);
 char **concat_path(char **tok, char *path_list);

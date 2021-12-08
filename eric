@@ -8,10 +8,8 @@
 */
 int main(int ac, char **av, char **env)
 {
-	char *line = NULL; /**char *path = NULL;*/
-	char **tok = NULL; /**char **tok_path = NULL;*/
-	int status = 1, check_path = 0;
-	int (*_check_build)(void);
+	char *line = NULL, **tok = NULL; /**char **tok_path = NULL;*/
+	int status = 1, check_path = 0, (*_check_build)(void);
 	(void)ac, (void)av, (void)env;
 while (status == 1)
 {
@@ -39,6 +37,8 @@ while (status == 1)
 			{
 				status = _check_build();
 				_free_str(tok, line);
+				if (status == 3)
+					exit(EXIT_SUCCESS);
 			}
 		}
 		else

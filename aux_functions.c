@@ -25,13 +25,14 @@ int wordcount(char *string, char delim)
 *exec - exec a command with arg and env
 *@tok: array of tokenized line input
 *@line: output of read for free after use
-*Return: 0
+*Return: wstatus
 */
 
-void exec(char **tok, char *line)
+int exec(char **tok, char *line)
 {
 	int res;
 	pid_t pid;
+	int wstatus = 0;
 
 	pid = fork();
 
@@ -54,9 +55,17 @@ void exec(char **tok, char *line)
 		exit(0);
 	}
 	else
-	wait(NULL);
-	free(line);
-	free(tok);
+	{
+		wait(&wstatus);
+		if (WIFEXITED(wstatus))
+		{
+		WEXITSTATUS(wstatus);
+		}
+		free(line);
+		free(tok);
+		return (wstatus);
+	}
+return (wstatus);
 }
 
 /**
