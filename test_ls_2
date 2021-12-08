@@ -1,9 +1,3 @@
-/bin/ls
-/bin//ls
-env
-cd
+/bin/ls -l -a
 help
-/bin/ls -l
-  
 exit
-
